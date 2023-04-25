@@ -1,0 +1,53 @@
+﻿@model Milk.Web.ViewModels.FarmerAddViewModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<div class="row">
+    <div class="col-md-6 detail-container">
+        <form asp-controller="farmer" id="form" asp-action="add" autocomplete="off" spellcheck="false" enctype="multipart/form-data">
+            <div class="row my-1">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label float-label mt-2">Name</label>
+                        <input type="text" asp-for="Name" placeholder="enter Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-1">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label asp-for="Village" class="control-label float-label mt-2">Village</label>
+                        <input type="text" asp-for="Village" placeholder="enter village name" class="form-control" />
+                        <span asp-validation-for="Village" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-1">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label asp-for="ProfilePicture" class="control-label float-label mt-2">Profile Picture</label>
+                        <input type="text" asp-for="ProfilePicture" placeholder="select profile picture" class="form-control" />
+                        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-1">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label asp-for="MobileNumber" class="control-label float-label mt-2">Mobile Number</label>
+                        <input type="text" asp-for="MobileNumber" placeholder="Enter Mobile Number" class="form-control" />
+                        <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="detailBtn-group">
+                <button  id="btnSubmit" class="btn btn-primary  mr-2">Add</button>
+                <a asp-controller="farmer" asp-action="index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

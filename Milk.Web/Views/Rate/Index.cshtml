@@ -1,0 +1,32 @@
+﻿@model Milk.Web.ViewModels.RateChartWrapperViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<button type="button" class="col-md-2" onclick="location.href='@Url.Action("Index","Home")'">Back</button>
+<div class="row">
+    <h1 class="col-md-4">Index</h1>
+</div>
+<button type="button" class="col-md-2" onclick="location.href='@Url.Action("RateSheetImport","Rate")'">Upload Rate Excel</button>
+<div id="indexPartialContent">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th width="20%">FAT</th>
+                <th width="20%">SNF</th>
+                <th width="20%">Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rate in Model.RateChartList)
+            {
+                <tr>
+                    <td>@rate.FAT</td>
+                    <td>@rate.SNF</td>
+                    <td>@rate.Rate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

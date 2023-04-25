@@ -1,0 +1,39 @@
+﻿@model Milk.Web.ViewModels.FeedWrapperViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<button type="button" class="col-md-2" onclick="location.href='@Url.Action("Index","Home")'">Back</button>
+<div class="row">
+    <h1 class="col-md-4">Index</h1>
+    <button type="button" class="col-md-4" onclick="location.href='@Url.Action("Add","Feed")'">Add New Feed</button>
+</div>
+
+<div id="indexPartialContent">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th width="20%">Name</th>
+                <th width="20%">Amount</th>
+                <th width="20%">Date</th>
+                <th width="20%" class="text-center">Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var feed in Model.FeedList)
+            {
+                <tr>
+                    <td>@feed.Name</td>
+                    <td>@feed.Amount</td>
+                    <td>@feed.Date</td>
+                    <td class="text-center">
+                        <span title="Edit" class="cursor-pointer" onclick="redirectToEdit('/feed/edit/@feed.Id')"><i class="fa fa-pencil ml-3" aria-hidden="true"></i></span>
+                        <span title="Remove" class="cursor-pointer" onclick="OpenDeleteConfirmBox('@feed.Id')"><i class="fa fa-trash ml-3" aria-hidden="true"></i></span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<partial name="_deletePopup" />
+

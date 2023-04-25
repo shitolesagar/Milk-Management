@@ -1,0 +1,22 @@
+﻿@model Milk.Web.ViewModels.FeedDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="form-group mt-2 float-container position-relative">
+    <label class="control-label float-label">Name</label>
+    <p class=""> @(Model.Farmer)</p>
+</div>
+<div class="form-group mt-2 float-container position-relative">
+    <label class="control-label float-label">Date</label>
+    <p class=""> @(Model.Date)</p>
+</div>
+<div class="form-group mt-2 float-container position-relative">
+    <label class="control-label float-label">Amount</label>
+    <p class=""> @(Model.Amount)</p>
+</div>
+
+<button type="button" class="col-md-4" onclick="location.href='@Url.Action("Index","Feed")'">Back To Index Page</button>
+

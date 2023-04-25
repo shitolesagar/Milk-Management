@@ -1,0 +1,84 @@
+﻿@model Milk.Web.ViewModels.MilkEntryViewModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+}
+<h1>Milk Entry</h1>
+<button type="button" class="col-md-2" onclick="location.href='@Url.Action("MilkEntryExcelImport","MilkEntry")'">Upload Excel Sheet</button>
+<div class="row">
+    <div class="col-md-6 detail-container">
+        <form asp-controller="MilkEntry" id="form" asp-action="add" autocomplete="off" spellcheck="false" enctype="multipart/form-data">
+            <div class="row my-1">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label class="float-label">Select Farmer</label>
+                        <div class="my-custom-select width-100">
+                            <select class="form-control select-dropDown" asp-for="FarmerId" value="" asp-items="ViewBag.FarmersList">
+                                <option value="">select</option>
+                            </select>
+                        </div>
+                        <span asp-validation-for="FarmerId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-1">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label asp-for="Date" class="control-label float-label">Select Date</label>
+                        <input type="text" asp-for="Date" readonly="readonly" class="form-control" maxlength="40" value="" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-1">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label asp-for="Milk" class="control-label float-label mt-2">Milk</label>
+                        <input type="text" asp-for="Milk" placeholder="Enter Milk" class="form-control" />
+                        <span asp-validation-for="Milk" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-1">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label asp-for="FAT" class="control-label float-label mt-2">FAT</label>
+                        <input type="text" asp-for="FAT" placeholder="Enter FAT" class="form-control" />
+                        <span asp-validation-for="FAT" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-1">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label asp-for="SNF" class="control-label float-label mt-2">SNF</label>
+                        <input type="text" asp-for="SNF" placeholder="Enter SNF" class="form-control" />
+                        <span asp-validation-for="SNF" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="detailBtn-group">
+                <button id="btnSubmit" class="btn btn-primary  mr-2">Add</button>
+                <a asp-controller="MilkEntry" asp-action="index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+
+        $(document).ready(function () {
+            $('#Date').datepicker({
+            });
+        })
+    </script>
+
+}
+
